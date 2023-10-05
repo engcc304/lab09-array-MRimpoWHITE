@@ -22,10 +22,66 @@
 */
 
 #include <stdio.h>
+#include <string.h>
 
 int main() {
 
-    //--| YOUR CODE HERE
+    char ip[99] ;
+    int HMchar = 0 ;
+    int sameC = 1 ;
+    int sspace = 0 ;
+
+    printf( "Input : ")  ;
+    gets ( ip ) ;
+
+    for (int i = 0; ip[i] != '\0' ; i++) {
+        if ( ip[ i ] != ' ' ) {
+            HMchar++ ;
+        }
+    }
+
+    printf( "\ncharacter = %d\n" , HMchar ) ;
+
+    for ( int i = 0 ; ip[i] != '\0' ; i++ ) {
+            for ( int x = i + 1 ; x < HMchar ; x++ ) { 
+                if ( ip[ i ] > ip[ x ] ){
+                    char temp = ip[ i ] ;
+                    ip[ i ] = ip[ x ] ;
+                    ip[ x ] = temp ;
+                } // end if
+            } // end for
+        } // end for 
+
+    for ( int i = 0 ; ip[i] != '\0' ; i ++ ) {
+
+	    while ( ip[i] != '\0' && ip[ i ] == ip[ i + 1 ] ) {
+		    sameC++ ; 
+		    i++ ; 
+            if ( ip[i] == ' ' )
+            {
+                sspace++ ;
+            }
+	    }
+		    printf( "%c -> %d\n" , ip[ i ] , sameC ) ; 
+	    
+	    sameC = 1 ; 
+    }
 
     return 0 ;
 }//end main function
+
+
+
+// if ( sspace > 0)
+        // {
+        //     printf( "\nSpace -> s%d\n" , sspace ) ;
+        // }
+        
+	    // if ( ip[ i ] == ' ' ) {
+		//     sspace++ ; 
+	    // }
+        // if ( ip[ i ] == ' ' ) {
+		//     printf( "Space -> %d\n" , sspace ) ;
+	    // }
+	    // else {
+            // }
